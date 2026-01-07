@@ -1,6 +1,8 @@
-def main():
-    print("Hello from code!")
+from bs4 import BeautifulSoup
+with open("home.html","r") as html_file:
+    content = html_file.read()
+    soup = BeautifulSoup(content, "lxml")
 
-
-if __name__ == "__main__":
-    main()
+    course_html_tags = soup.find_all("h3")
+    for course in course_html_tags:
+        print(course.text)
